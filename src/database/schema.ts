@@ -7,6 +7,42 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
+export class SectionSchema extends BaseModel {
+  static $columns = ['createdAt', 'id', 'name', 'updatedAt'] as const
+  $columns = SectionSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare name: string
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
+export class TeacherSchema extends BaseModel {
+  static $columns = ['createdAt', 'firstname', 'gender', 'id', 'lastname', 'nickname', 'origine', 'sectionId', 'updatedAt'] as const
+  $columns = TeacherSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column()
+  declare firstname: string
+  @column()
+  declare gender: string
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare lastname: string
+  @column()
+  declare nickname: string
+  @column()
+  declare origine: string
+  @column()
+  declare sectionId: number | null
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
 export class UserSchema extends BaseModel {
   static $columns = ['createdAt', 'email', 'fullName', 'id', 'password', 'updatedAt'] as const
   $columns = UserSchema.$columns
